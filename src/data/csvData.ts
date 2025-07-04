@@ -1,5 +1,5 @@
 export const csvData = `Domain,Logical Table Name,Attribute Name,Physical Table Name,Definition,Data type
-Customer,Customer Address Dimension,Customer State Address,ADR_CUST_STATE,The state code for customer address information,varchar(2)
+Customer,Customer Addr Dimension,Customer State Address,ADR_CUST_STATE,The state code for customer address information,varchar(2)
 Customer,Customer Eligibility Fact,Region Certification Code,CDE_REGION_CERT,A code representing the regional certification authority,varchar(10)
 Vendor,Vendor Dimension,Vendor Business Name,NAM_VENDOR_BIZ,The registered business name for vendor entity,varchar(50)
 Finance,Financial Fact,Reference Number,NUM_REF,Financial transaction reference identifier,Decimal(9)
