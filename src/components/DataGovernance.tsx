@@ -43,20 +43,20 @@ export const DataGovernance: React.FC<DataGovernanceProps> = ({ stats }) => {
   ];
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-8 shadow-xl">
-      <div className="flex items-center space-x-4 mb-8">
+    <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl p-4 sm:p-8 shadow-xl w-full max-w-full">
+      <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
         <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl shadow-lg">
-          <Shield className="h-7 w-7 text-white" />
+          <Shield className="h-7 w-7 text-white max-w-full" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-purple-800 bg-clip-text text-transparent">
+          <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-900 to-purple-800 bg-clip-text text-transparent">
             Data Governance & Quality
           </h2>
-          <p className="text-gray-600 mt-1">Monitor data quality metrics and governance standards</p>
+          <p className="text-gray-600 mt-1 text-xs sm:text-sm">Monitor data quality metrics and governance standards</p>
         </div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
         {qualityMetrics.map((metric, index) => {
           const Icon = metric.icon;
           return (

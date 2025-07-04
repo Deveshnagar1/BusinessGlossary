@@ -35,29 +35,28 @@ function App() {
   const statusOptions = ['All Status', 'Active', 'Inactive', 'Pending'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmMWY1ZjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48Y2lyY2xlIGN4PSI3IiBjeT0iNyIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
-      
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4 sm:py-8 w-full">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 md:mb-12 gap-4 w-full">
+          <div className="space-y-4 w-full">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
               <div className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg">
-                <Sparkles className="h-8 w-8 text-white" />
+                <Sparkles className="h-8 w-8 text-white max-w-full" />
               </div>
               <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+                <h1 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
                   Business Glossary
                 </h1>
-                <p className="text-lg text-gray-600 mt-1">
+                <p className="text-base sm:text-lg text-gray-600 mt-1">
                   Discover data definitions across <span className="font-semibold text-blue-600">{uniqueDomains.length - 1} domains</span> and <span className="font-semibold text-indigo-600">{availableLogicalTables.length - 1} logical tables</span>
                 </p>
               </div>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 w-full md:w-auto">
             <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200 shadow-sm">
               <span className="text-blue-700 font-semibold">{filteredRecords.length} results</span>
             </div>
