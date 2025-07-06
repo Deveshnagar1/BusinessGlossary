@@ -1,6 +1,6 @@
 export const csvData = `DOMAIN,LOGICAL TAB NAME,ATTRIBUTE NAME,PHYSICAL TABLE NAME,TABLE NAME,DEFINITION,DATA TYPE
-Member,Member Address Dimension,Latitude Number,GIS_LAT,TABLE_ADR,The geographic latitude coordinate of the member's address,"Decimal(11,6)"
-Member,Member Address Dimension,Longitude Number,GIS_LONG,TABLE_ADR,The geographic longitude coordinate of the member's address,"Decimal(11,6)"
+Member,Member Address Dimension,Latitude Number,GIS_LAT,TABLE_ADR,The geographic latitude coordinate of the member's address,Decimal(11,6)
+Member,Member Address Dimension,Longitude Number,GIS_LONG,TABLE_ADR,The geographic longitude coordinate of the member's address,Decimal(11,6)
 Member,Member Demographic Dimension,Gender Code,CDE_GNDR,TABLE_DEMO,A code representing gender of the member,Varchar(5)
 Provider,Provider Enrollment Dimension,Contract Description,PROC_CNTRCT,TABLE_ENROLL,Description of Provider Contract,Varchar(50)
 Provider,Provider License Fact,License Date,DTE_LIC,TABLE_LICE_FACT,Date of the provider's license.,TIMESTAMP()
