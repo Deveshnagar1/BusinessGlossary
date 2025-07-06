@@ -13,7 +13,7 @@ export const useBusinessGlossary = () => {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(5);
   const [view, setView] = useState<'card' | 'table'>('table');
 
   const allRecords = useMemo(() => parseCSV(csvData), []);
