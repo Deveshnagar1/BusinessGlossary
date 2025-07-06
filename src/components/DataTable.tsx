@@ -11,7 +11,7 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
   return (
     <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-xl w-full">
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[900px]">
+        <table className="w-full min-w-[1000px]">
           <thead className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">
             <tr>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
