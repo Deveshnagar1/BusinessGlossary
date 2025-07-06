@@ -13,6 +13,7 @@ import { useBusinessGlossary } from './hooks/useBusinessGlossary';
 
 function App() {
   const [showAIInsights, setShowAIInsights] = useState(false);
+  const [executiveView, setExecutiveView] = useState(false);
   
   const {
     filters,
@@ -57,6 +58,16 @@ function App() {
             </div>
           </div>
           <div className="flex items-center space-x-4 w-full md:w-auto">
+            {/* Executive View Toggle */}
+            <label className="flex items-center space-x-2 bg-white/80 px-3 py-2 rounded-xl border border-gray-200 shadow-sm cursor-pointer">
+              <input
+                type="checkbox"
+                checked={executiveView}
+                onChange={e => setExecutiveView(e.target.checked)}
+                className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
+              />
+              <span className="text-sm font-medium text-gray-700">Executive View</span>
+            </label>
             <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200 shadow-sm">
               <span className="text-blue-700 font-semibold">{filteredRecords.length} results</span>
             </div>
@@ -135,7 +146,7 @@ function App() {
                   ))}
                 </div>
               ) : (
-                <DataTable records={paginatedRecords} />
+                <DataTable records={paginatedRecords} hidePhysicalTable={executiveView} />
               )}
               
               {/* Pagination */}

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Edit, Trash2, CheckCircle, Database } from 'lucide-react';
+import { Edit, Trash2, Database } from 'lucide-react';
 import { DataRecord } from '../types';
 
 interface DataTableProps {
   records: DataRecord[];
+  hidePhysicalTable?: boolean;
 }
 
-export const DataTable: React.FC<DataTableProps> = ({ records }) => {
+export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable }) => {
   return (
     <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-xl w-full">
       <div className="overflow-x-auto">
@@ -22,9 +23,11 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Attribute Name
               </th>
-              <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
-                Physical Table
-              </th>
+              {!hidePhysicalTable && (
+                <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
+                  Physical Table
+                </th>
+              )}
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Data Type
               </th>
@@ -56,11 +59,13 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm text-gray-900 font-semibold">
                   {record.attributeName}
                 </td>
-                <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
-                  <span className="text-xs sm:text-sm text-gray-600 font-mono bg-gray-100 px-2 py-1 rounded-lg">
-                    {record.physicalTableName}
-                  </span>
-                </td>
+                {!hidePhysicalTable && (
+                  <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
+                    <span className="text-xs sm:text-sm text-gray-600 font-mono bg-gray-100 px-2 py-1 rounded-lg">
+                      {record.physicalTableName}
+                    </span>
+                  </td>
+                )}
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm">
                   {record.dataType}
                 </td>
