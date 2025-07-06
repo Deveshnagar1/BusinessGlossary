@@ -78,7 +78,9 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                   {record.definition}
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm">
-                  {record.dataType}
+                  {record.attributeName === 'Latitude Number' || record.attributeName === 'Longitude Number'
+                    ? 'Decimal(11,6)'
+                    : record.dataType}
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
