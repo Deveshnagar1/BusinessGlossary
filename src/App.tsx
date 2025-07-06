@@ -13,7 +13,7 @@ import { useBusinessGlossary } from './hooks/useBusinessGlossary';
 
 function App() {
   const [showAIInsights, setShowAIInsights] = useState(false);
-  const [executiveView, setExecutiveView] = useState(false);
+  const [executiveView, setExecutiveView] = useState(true);
   
   const {
     filters,
