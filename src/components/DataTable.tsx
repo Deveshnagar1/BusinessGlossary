@@ -1,7 +1,6 @@
 import React from 'react';
 import { Edit, Trash2, Database } from 'lucide-react';
 import { DataRecord } from '../types';
-import { DataLineageModal } from './DataLineageModal';
 
 interface DataTableProps {
   records: DataRecord[];
@@ -9,21 +8,6 @@ interface DataTableProps {
 }
 
 export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable }) => {
-  const [lineageOpen, setLineageOpen] = React.useState(false);
-  const [lineageTerm, setLineageTerm] = React.useState('');
-  const [lineageRelated, setLineageRelated] = React.useState<string[]>([]);
-
-  const handleLineage = (record: DataRecord) => {
-    setLineageTerm(record.attributeName);
-    // Find related terms by domain or logicalTableName (simple mock logic)
-    const related = records
-      .filter(r => (r.domain === record.domain || r.logicalTableName === record.logicalTableName) && r.attributeName !== record.attributeName)
-      .map(r => r.attributeName)
-      .slice(0, 4);
-    setLineageRelated(related);
-    setLineageOpen(true);
-  };
-
   return (
     <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-xl w-full">
       <div className="overflow-x-auto">
@@ -77,7 +61,7 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                     </span>
                   </div>
                 </td>
-                <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm text-gray-900 font-semibold cursor-pointer hover:underline" onClick={() => handleLineage(record)} title="Show data lineage">
+                <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm text-gray-900 font-semibold">
                   {record.attributeName}
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
@@ -97,7 +81,6 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                   {record.attributeName === 'Latitude Number' || record.attributeName === 'Longitude Number'
                     ? 'Decimal(11,6)'
                     : record.dataType}
-                  <span className="ml-2 text-blue-400 hover:text-blue-600 cursor-pointer" title="Show data lineage" onClick={() => handleLineage(record)}>↗</span>
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
@@ -119,7 +102,6 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
           </tbody>
         </table>
       </div>
-      <DataLineageModal open={lineageOpen} onClose={() => setLineageOpen(false)} term={lineageTerm} related={lineageRelated} />
     </div>
   );
 };
