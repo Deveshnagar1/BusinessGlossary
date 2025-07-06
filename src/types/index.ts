@@ -3,6 +3,7 @@ export interface DataRecord {
   logicalTableName: string;
   attributeName: string;
   physicalTableName: string;
+  tableName: string;
   definition: string;
   dataType: string;
 }

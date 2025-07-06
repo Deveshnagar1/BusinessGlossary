@@ -11,28 +11,31 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
   return (
     <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-xl w-full">
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[700px]">
+        <table className="w-full min-w-[900px]">
           <thead className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200">
             <tr>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Domain
               </th>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
-                Logical Table
+                Logical Table Name
               </th>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Attribute Name
               </th>
               {!hidePhysicalTable && (
                 <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
-                  Physical Table
+                  Physical Table Name
                 </th>
               )}
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
-                Data Type
+                Table Name
               </th>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Definition
+              </th>
+              <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
+                Data Type
               </th>
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Status
@@ -53,7 +56,9 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
                   <div className="flex items-center space-x-2">
                     <Database className="h-4 w-4 text-gray-400" />
-                    <span className="text-xs sm:text-sm font-semibold text-gray-900">{record.logicalTableName}</span>
+                    <span className="text-xs sm:text-sm font-semibold text-gray-900">
+                      {record.logicalTableName}
+                    </span>
                   </div>
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm text-gray-900 font-semibold">
@@ -67,10 +72,13 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                   </td>
                 )}
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm">
-                  {record.dataType}
+                  {record.tableName}
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap max-w-xs sm:max-w-md truncate text-xs sm:text-sm">
                   {record.definition}
+                </td>
+                <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm">
+                  {record.dataType}
                 </td>
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
