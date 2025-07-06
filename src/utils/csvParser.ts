@@ -3,7 +3,7 @@ import { DataRecord } from '../types';
 export const parseCSV = (csvText: string): DataRecord[] => {
   const lines = csvText.trim().split('\n');
   const headers = lines[0].split(',');
-  
+  // DOMAIN,LOGICAL TAB NAME,ATTRIBUTE NAME,PHYSICAL TABLE NAME,TABLE NAME,DEFINITION,DATA TYPE
   return lines.slice(1).map(line => {
     const values = line.split(',');
     return {
@@ -11,8 +11,9 @@ export const parseCSV = (csvText: string): DataRecord[] => {
       logicalTableName: values[1] || '',
       attributeName: values[2] || '',
       physicalTableName: values[3] || '',
-      definition: values[4] || '',
-      dataType: values[5] || ''
+      tableName: values[4] || '',
+      definition: values[5] || '',
+      dataType: values[6] || ''
     };
   });
 };
