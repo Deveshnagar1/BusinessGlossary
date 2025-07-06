@@ -23,11 +23,9 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
               <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                 Attribute Name
               </th>
-              {(hidePhysicalTable) && (
-                <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
-                  Physical Table Name
-                </th>
-              )}
+              <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
+                Physical Table Name
+              </th>
               {(!hidePhysicalTable) && (
                 <th className="px-3 sm:px-6 py-3 sm:py-5 text-left text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider">
                   Table Name
@@ -66,13 +64,11 @@ export const DataTable: React.FC<DataTableProps> = ({ records, hidePhysicalTable
                 <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm text-gray-900 font-semibold">
                   {record.attributeName}
                 </td>
-                {(hidePhysicalTable) && (
-                  <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
-                    <span className="text-xs sm:text-sm text-gray-600 font-mono bg-gray-100 px-2 py-1 rounded-lg">
-                      {record.physicalTableName}
-                    </span>
-                  </td>
-                )}
+                <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap">
+                  <span className="text-xs sm:text-sm text-gray-600 font-mono bg-gray-100 px-2 py-1 rounded-lg">
+                    {record.physicalTableName}
+                  </span>
+                </td>
                 {(!hidePhysicalTable) && (
                   <td className="px-3 sm:px-6 py-3 sm:py-5 whitespace-nowrap text-xs sm:text-sm">
                     {record.tableName}
