@@ -1,0 +1,11 @@
+DOMAIN,LOGICAL TABLE NAME,ATTRIBUTE NAME,DEFINITION
+Member,Member Address Dimension,Latitude Number,The geographic latitude coordinate of the member's addressThe geographic latitude coordinate of the member's addressThe geographic latitude coordinate of the member's addressThe geographic latitude coordinate of the member's addressThe geographic latitude coordinate of the member's address
+Member,Member Address Dimension,Longitude Number,The geographic longitude coordinate of the member's address
+Member,Member Demographic Dimension,Gender Code,A code representing gender of the member
+Provider,Provider Enrollment Dimension,Contract Description,Description of Provider Contract
+Provider,Provider License Fact,License Date,Date of the provider's license.
+Finance,Finance Capitation Dimension,Medicare Indicator,A code representing if recipient covered by Medicare
+Finance,Finance Transaction Dimension,Type Description,A description of the payment type.
+Claim,Claim Benefits Group Dimension,Adjustment Reason,A detailed explanation of the reason made to a transaction
+Claim,Claim Error Dimension,Error Status Code,A code representing the error status
+Claim,Claim Balance,C Type Code,The claim type code that identifies type of service category

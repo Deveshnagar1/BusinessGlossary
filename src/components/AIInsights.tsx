@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, Sparkles, TrendingUp, AlertCircle, CheckCircle, BarChart3, Zap, Lightbulb, Target, Shield } from 'lucide-react';
+import { Brain, Sparkles, TrendingUp, BarChart3, Zap, Lightbulb, Target, Shield } from 'lucide-react';
 import { DataRecord } from '../types';
 
 interface AIInsightsProps {
@@ -118,7 +118,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ records, onClose }) => {
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
         <div className="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
           <div className="relative mb-6">
-            <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto">
               <Brain className="h-10 w-10 text-white animate-pulse" />
             </div>
             <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
@@ -128,7 +128,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ records, onClose }) => {
           <h3 className="text-xl font-bold text-gray-900 mb-2">AI Analysis in Progress</h3>
           <p className="text-gray-600 mb-4">Analyzing {records.length} records for patterns and insights...</p>
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
+            <div className="bg-gradient-to-r from-teal-400 to-cyan-400 h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ records, onClose }) => {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6 text-white">
+        <div className="bg-gradient-to-r from-teal-400 to-cyan-400 p-6 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="p-3 bg-white/20 rounded-xl">
@@ -147,7 +147,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ records, onClose }) => {
               </div>
               <div>
                 <h2 className="text-2xl font-bold">AI-Powered Data Insights</h2>
-                <p className="text-purple-100">Intelligent analysis of {records.length} data records</p>
+                <p className="text-cyan-100">Intelligent analysis of {records.length} data records</p>
               </div>
             </div>
             <button
@@ -172,7 +172,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ records, onClose }) => {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center space-x-2 py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === tab.id
-                      ? 'border-purple-500 text-purple-600'
+                      ? 'border-teal-500 text-teal-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >

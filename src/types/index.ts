@@ -2,10 +2,10 @@ export interface DataRecord {
   domain: string;
   logicalTableName: string;
   attributeName: string;
-  physicalTableName: string;
-  tableName: string;
   definition: string;
-  dataType: string;
+  physicalTableName?: string;
+  tableName?: string;
+  dataType?: string;
 }
 
 export interface DataQualityStats {
@@ -20,6 +20,5 @@ export interface FilterState {
   domain: string;
   logicalTable: string;
   attribute: string;
-  status: string;
   searchTerm: string;
 }

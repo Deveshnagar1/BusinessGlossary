@@ -2,51 +2,31 @@ import { DataRecord } from '../types';
 
 export const parseCSV = (csvText: string): DataRecord[] => {
   const lines = csvText.trim().split('\n');
-  const headers = lines[0].split(',');
-  // DOMAIN,LOGICAL TAB NAME,ATTRIBUTE NAME,PHYSICAL TABLE NAME,TABLE NAME,DEFINITION,DATA TYPE
+  if (lines.length < 2) return [];
   return lines.slice(1).map(line => {
     const values = line.split(',');
     return {
-      domain: values[0] || '',
-      logicalTableName: values[1] || '',
-      attributeName: values[2] || '',
-      physicalTableName: values[3] || '',
-      tableName: values[4] || '',
-      definition: values[5] || '',
-      dataType: values[6] || ''
+      domain: values[0]?.trim() || '',
+      logicalTableName: values[1]?.trim() || '',
+      attributeName: values[2]?.trim() || '',
+      definition: values[3]?.trim() || '',
     };
   });
 };
 
 export const calculateDataQuality = (records: DataRecord[]) => {
   const totalRecords = records.length;
-  
   let nullCount = 0;
   let missingCount = 0;
   let duplicateCount = 0;
-  
-  const seenRecords = new Set();
-  
+  const seenRecords = new Set<string>();
   records.forEach(record => {
-    // Check for null values
-    if (!record.definition || record.definition.trim() === '') {
-      nullCount++;
-    }
-    
-    // Check for missing critical fields
-    if (!record.domain || !record.attributeName || !record.physicalTableName) {
-      missingCount++;
-    }
-    
-    // Check for duplicates based on physical table name + attribute name
-    const key = `${record.physicalTableName}-${record.attributeName}`;
-    if (seenRecords.has(key)) {
-      duplicateCount++;
-    } else {
-      seenRecords.add(key);
-    }
+    if (!record.definition?.trim()) nullCount++;
+    if (!record.domain || !record.attributeName) missingCount++;
+    const key = `${record.domain}-${record.logicalTableName}-${record.attributeName}`;
+    if (seenRecords.has(key)) duplicateCount++;
+    else seenRecords.add(key);
   });
-  
   return {
     totalRecords,
     nullPercentage: Math.round((nullCount / totalRecords) * 100),

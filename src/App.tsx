@@ -13,7 +13,6 @@ import { useBusinessGlossary } from './hooks/useBusinessGlossary';
 
 function App() {
   const [showAIInsights, setShowAIInsights] = useState(false);
-  const [executiveView, setExecutiveView] = useState(true);
   
   const {
     filters,
@@ -33,8 +32,6 @@ function App() {
     setView
   } = useBusinessGlossary();
 
-  const statusOptions = ['All Status', 'Active', 'Inactive', 'Pending'];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full">
       {/* Background Pattern */}
@@ -49,7 +46,7 @@ function App() {
               </div>
               <div>
                 <h1 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
-                  Business Glossary
+                  Genius Business Glossary
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600 mt-1">
                   Discover data definitions across <span className="font-semibold text-blue-600">{uniqueDomains.length - 1} domains</span> and <span className="font-semibold text-indigo-600">{availableLogicalTables.length - 1} logical tables</span>
@@ -58,26 +55,6 @@ function App() {
             </div>
           </div>
           <div className="flex items-center space-x-4 w-full md:w-auto">
-            {/* Executive View Toggle */}
-            <label className="flex items-center space-x-2 bg-white/80 px-3 py-2 rounded-xl border border-gray-200 shadow-sm cursor-pointer">
-              <input
-                type="checkbox"
-                checked={executiveView}
-                onChange={e => setExecutiveView(e.target.checked)}
-                className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
-              />
-              <span className="text-sm font-medium text-gray-700">Executive view</span>
-            </label>
-            <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200 shadow-sm">
-              <span className="text-blue-700 font-semibold">{filteredRecords.length} results</span>
-            </div>
-            <button 
-              onClick={() => setShowAIInsights(true)}
-              className="group flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <Brain className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              <span className="font-medium">AI Insights</span>
-            </button>
             <ExportDropdown 
               records={filteredRecords} 
               totalRecords={dataQualityStats.totalRecords}
@@ -87,7 +64,7 @@ function App() {
 
         {/* Filters */}
         <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-white/50 shadow-xl p-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <FilterDropdown
               label="Domain"
               value={filters.domain}
@@ -105,12 +82,6 @@ function App() {
               value={filters.attribute}
               options={availableAttributes}
               onChange={(value) => updateFilter('attribute', value)}
-            />
-            <FilterDropdown
-              label="Status"
-              value={filters.status}
-              options={statusOptions}
-              onChange={(value) => updateFilter('status', value)}
             />
           </div>
 
@@ -136,6 +107,17 @@ function App() {
         </div>
 
         {/* Results */}
+        <div className="mb-6 flex items-center justify-between">
+          <span className="text-blue-700 font-semibold text-base">{filteredRecords.length} results</span>
+          <button 
+            onClick={() => setShowAIInsights(true)}
+            className="group flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-teal-400 to-cyan-400 text-white rounded-xl hover:from-teal-500 hover:to-cyan-500 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            <Brain className="h-5 w-5 group-hover:scale-110 transition-transform" />
+            <span className="font-medium">AI Insights</span>
+          </button>
+        </div>
+
         <div className="mb-12">
           {filteredRecords.length > 0 ? (
             <>
@@ -146,7 +128,7 @@ function App() {
                   ))}
                 </div>
               ) : (
-                <DataTable records={paginatedRecords} hidePhysicalTable={executiveView} />
+                <DataTable records={paginatedRecords} />
               )}
               
               {/* Pagination */}
