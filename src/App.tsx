@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RotateCcw, Sparkles, Brain } from 'lucide-react';
+import PasswordGate from './components/PasswordGate';
 import { FilterDropdown } from './components/FilterDropdown';
 import { SearchInput } from './components/SearchInput';
 import { DataCard } from './components/DataCard';
@@ -12,6 +13,7 @@ import { ExportDropdown } from './components/ExportDropdown';
 import { useBusinessGlossary } from './hooks/useBusinessGlossary';
 
 function App() {
+  const [authorized, setAuthorized] = useState(() => localStorage.getItem('bg_authorized') === 'true');
   const [showAIInsights, setShowAIInsights] = useState(false);
   
   const {
@@ -31,6 +33,10 @@ function App() {
     setCurrentPage,
     setView
   } = useBusinessGlossary();
+
+  if (!authorized) {
+    return <PasswordGate onAuth={() => setAuthorized(true)} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 w-full">
