@@ -1,15 +1,17 @@
 import { DataRecord } from '../types';
 
+const normalize = (value: string) => value.trim();
+
 export const parseCSV = (csvText: string): DataRecord[] => {
   const lines = csvText.trim().split('\n');
   if (lines.length < 2) return [];
   return lines.slice(1).map(line => {
     const values = line.split(',');
     return {
-      domain: values[0]?.trim() || '',
-      logicalTableName: values[1]?.trim() || '',
-      attributeName: values[2]?.trim() || '',
-      definition: values[3]?.trim() || '',
+      domain: normalize(values[0] || ''),
+      logicalTableName: normalize(values[1] || ''),
+      attributeName: normalize(values[2] || ''),
+      definition: normalize(values[3] || ''),
     };
   });
 };

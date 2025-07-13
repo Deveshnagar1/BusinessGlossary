@@ -72,7 +72,41 @@ export const useBusinessGlossary = () => {
   const dataQualityStats = useMemo(() => calculateDataQuality(allRecords), [allRecords]);
 
   const updateFilter = useCallback((key: keyof FilterState, value: string) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
+    setFilters(prev => {
+      if (key === 'domain') {
+        return {
+          domain: value,
+          logicalTable: 'All Tables',
+          attribute: 'All Attributes',
+          searchTerm: ''
+        };
+      }
+      if (key === 'logicalTable') {
+        return {
+          domain: prev.domain,
+          logicalTable: value,
+          attribute: 'All Attributes',
+          searchTerm: ''
+        };
+      }
+      if (key === 'attribute') {
+        return {
+          domain: prev.domain,
+          logicalTable: prev.logicalTable,
+          attribute: value,
+          searchTerm: prev.searchTerm
+        };
+      }
+      if (key === 'searchTerm') {
+        return {
+          domain: prev.domain,
+          logicalTable: prev.logicalTable,
+          attribute: prev.attribute,
+          searchTerm: value
+        };
+      }
+      return prev;
+    });
     setCurrentPage(1);
   }, []);
 
