@@ -20,6 +20,7 @@ const PasswordGate: React.FC<{ onAuth: () => void }> = ({ onAuth }) => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-300">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80 flex flex-col gap-4">
         <h2 className="text-xl font-bold text-center">Business Glossary Login</h2>
+        <p className="text-sm text-gray-500 text-center mb-2">For access-related assistance, kindly connect with Devesh Nagar at devesh.nagar@gainwelltechnologies.com.</p>
         <input
           type="password"
           placeholder="Enter password"
