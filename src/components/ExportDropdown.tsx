@@ -27,7 +27,7 @@ export const ExportDropdown: React.FC<ExportDropdownProps> = ({ records, totalRe
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        className="group flex items-center space-x-2 px-6 py-3 min-w-[200px] bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
       >
         <Download className="h-5 w-5 group-hover:scale-110 transition-transform" />
         <span className="font-medium">Export Data</span>
