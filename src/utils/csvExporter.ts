@@ -1,26 +1,22 @@
 import { DataRecord } from '../types';
 
 export const exportToCSV = (records: DataRecord[], filename: string = 'business-glossary-data') => {
-  // Create CSV headers
+  // Create CSV headers matching bg.csv
   const headers = [
-    'Domain',
-    'Logical Table Name',
-    'Attribute Name',
-    'Physical Table Name',
-    'Definition',
-    'Data Type'
+    'DOMAIN',
+    'LOGICAL TABLE NAME',
+    'ATTRIBUTE NAME',
+    'DEFINITION'
   ];
 
-  // Convert records to CSV rows
+  // Convert records to CSV rows (no extra quotes)
   const csvRows = [
     headers.join(','), // Header row
     ...records.map(record => [
-      `"${record.domain}"`,
-      `"${record.logicalTableName}"`,
-      `"${record.attributeName}"`,
-      `"${record.physicalTableName}"`,
-      `"${record.definition.replace(/"/g, '""')}"`, // Escape quotes in definition
-      `"${record.dataType}"`
+      record.domain,
+      record.logicalTableName,
+      record.attributeName,
+      record.definition.replace(/\r|\n|,/g, ' ').replace(/"/g, '')
     ].join(','))
   ];
 

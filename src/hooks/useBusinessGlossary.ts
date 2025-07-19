@@ -30,7 +30,16 @@ export const useBusinessGlossary = () => {
   const allRecords = useMemo(() => csvText ? parseCSV(csvText) : [], [csvText]);
 
   const uniqueDomains = useMemo(() => {
-    return ['All Domains', ...Array.from(new Set(allRecords.map(r => r.domain))).sort()];
+    return [
+      'All Domains',
+      ...Array.from(
+        new Set(
+          allRecords
+            .map(r => (r.domain || '').trim())
+            .filter(domain => domain && domain !== '"' && domain !== '')
+        )
+      ).sort()
+    ];
   }, [allRecords]);
 
   const availableLogicalTables = useMemo(() => {
